@@ -10,7 +10,7 @@ const char* TOPIC_WAVE = "SIT210/wave";
 const char* TOPIC_PAT = "SIT210/pat";
 
 // LED Pin Definition
-const int LED_PIN = 6;
+const int LED_PIN = 8;
 
 // WiFi and MQTT Clients
 WiFiClient espClient;
@@ -23,7 +23,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length);
 void blinkLED(int count, int onTime, int offTime);
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   initializeWiFi();
   
   mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
@@ -80,8 +80,8 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
     // Blink the LED 3 times for the wave topic
     blinkLED(3, 500, 500);
   } else if (strcmp(topic, TOPIC_PAT) == 0) {
-    // Blink the LED 8 times for the pat topic
-    blinkLED(8, 250, 250);
+    // Blink the LED 7 times for the pat topic
+    blinkLED(7, 250, 250);
   }
 }
 
