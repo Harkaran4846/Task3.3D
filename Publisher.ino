@@ -25,7 +25,7 @@ void sendMQTTMessage(const char* topic, const char* message);
 void evaluateAndSend();
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   initializeWiFi();
   mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
 
@@ -95,9 +95,9 @@ void evaluateAndSend() {
   Serial.print("Measured Distance: ");
   Serial.println(distance);
 
-  if (distance < 15) {  // "Pat" condition
+  if (distance < 10) {  // "Pat" condition
     sendMQTTMessage(TOPIC_PAT, "pat from [Harkaran]");
-  } else if (distance < 20) {  // "Wave" condition
+  } else if (distance < 25) {  // "Wave" condition
     sendMQTTMessage(TOPIC_WAVE, "wave from [Harkaran]");
   }
 }
